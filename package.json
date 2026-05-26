@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "extract": "node scripts/extract-workflows.js",
-    "serve": "python3 -m http.server 8000 --directory website",
+    "organize": "node scripts/organize-workflows.js",
+    "deploy": "bash website/deploy.sh",
+    "serve": "bash website/deploy.sh --serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -24,6 +24,7 @@ GitHub will automatically deploy the website. Wait 2-3 minutes for the site to g
 ### Step 2: Access Your Site
 
 Your website will be available at:
+
 ```
 https://yourusername.github.io/n8n/website/
 ```
@@ -59,10 +60,10 @@ If deploying to a subfolder, update paths in `website/app.js`:
 
 ```javascript
 // Before
-const response = await fetch('./data/workflows.json');
+const response = await fetch("./data/workflows.json");
 
 // After (if in subfolder)
-const response = await fetch('./website/data/workflows.json');
+const response = await fetch("./website/data/workflows.json");
 ```
 
 ## Option 3: Deploy Using Actions
@@ -78,26 +79,26 @@ on:
   push:
     branches: [main]
     paths:
-      - 'website/**'
-      - 'scripts/**'
+      - "website/**"
+      - "scripts/**"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
-      
+          node-version: "18"
+
       - name: Install dependencies
         run: npm install
-      
+
       - name: Extract workflows
         run: npm run extract
-      
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -138,6 +139,7 @@ The action will run automatically on each push to `main`.
 **Problem**: Files not found when visiting site
 
 **Solutions**:
+
 - Verify the publish directory is correct
 - Check that GitHub Pages is enabled
 - Wait 2-3 minutes for deployment to complete
@@ -148,6 +150,7 @@ The action will run automatically on each push to `main`.
 **Problem**: Search and filters don't work
 
 **Solutions**:
+
 - Verify `app.js` is loaded (check DevTools Network tab)
 - Check browser console for errors
 - Ensure `data/workflows.json` is accessible
@@ -158,6 +161,7 @@ The action will run automatically on each push to `main`.
 **Problem**: "Failed to load workflows" message
 
 **Solutions**:
+
 - Verify `workflows.json` exists and is valid JSON
 - Check relative paths in `app.js`
 - Use browser DevTools Network tab to debug fetch requests
@@ -168,6 +172,7 @@ The action will run automatically on each push to `main`.
 **Problem**: Website looks broken or unstyled
 
 **Solutions**:
+
 - Verify `styles.css` is in the `website/` folder
 - Check browser cache
 - Verify CSS file paths in `index.html`
@@ -256,6 +261,7 @@ open http://localhost:8000/website
 ### Test Paths
 
 Ensure all paths work:
+
 - ✅ `data/workflows.json` loads
 - ✅ Workflows fetch correctly
 - ✅ JSON viewer works
@@ -267,6 +273,7 @@ Ensure all paths work:
 ### Protect Secrets
 
 Never commit:
+
 - API keys
 - Credentials
 - Personal information
@@ -284,6 +291,7 @@ credentials.json
 ### HTTPS
 
 GitHub Pages automatically provides HTTPS for:
+
 - `https://yourusername.github.io/n8n/`
 - Custom domains (after setup)
 
@@ -315,9 +323,11 @@ Add to `website/index.html` before `</head>`:
 <script async src="https://www.googletagmanager.com/gtag/js?id=GA_ID"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'GA_ID');
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "GA_ID");
 </script>
 ```
 
@@ -331,11 +341,11 @@ Replace `GA_ID` with your Google Analytics ID.
 
 ## Summary
 
-| Method | Setup Time | Maintenance | Recommended |
-|--------|-----------|-------------|------------|
-| Option 1 | 5 min | Minimal | ✅ Yes |
-| Option 2 | 15 min | Moderate | For advanced users |
-| Option 3 | 20 min | Automatic | For frequent updates |
+| Method   | Setup Time | Maintenance | Recommended          |
+| -------- | ---------- | ----------- | -------------------- |
+| Option 1 | 5 min      | Minimal     | ✅ Yes               |
+| Option 2 | 15 min     | Moderate    | For advanced users   |
+| Option 3 | 20 min     | Automatic   | For frequent updates |
 
 ---
 
