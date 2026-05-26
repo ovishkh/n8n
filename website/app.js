@@ -79,21 +79,31 @@ class WorkflowLibrary {
     }
 
     performSearch() {
-        const searchTerm = this.selectedFilters.search;
+        const searchTerm = this.selectedFilters.search.trim();
         
         if (searchTerm.length > 0) {
-            this.filteredWorkflows = this.workflows.filter(w => 
-                w.name.toLowerCase().includes(searchTerm) ||
-                w.category.toLowerCase().includes(searchTerm) ||
-                w.nodes.some(node => node.toLowerCase().includes(searchTerm)) ||
-                w.id.toLowerCase().includes(searchTerm)
-            );
+            this.filteredWorkflows = this.workflows.filter(w => {
+                // Convert to lowercase for case-insensitive search
+                const term = searchTerm.toLowerCase();
+                
+                // Search in multiple fields with weighted importance
+                const nameMatch = w.name.toLowerCase().includes(term);
+                const categoryMatch = w.category.toLowerCase().includes(term);
+                const fileNameMatch = w.fileName.toLowerCase().includes(term);
+                const idMatch = w.id.toLowerCase().includes(term);
+                const nodeNamesMatch = w.nodes.some(node => node.toLowerCase().includes(term));
+                const nodeTypesMatch = w.nodeTypes.some(type => type.toLowerCase().includes(term));
+                
+                // Return true if any match found
+                return nameMatch || categoryMatch || fileNameMatch || idMatch || nodeNamesMatch || nodeTypesMatch;
+            });
 
             // Show search suggestions
             this.showSearchSuggestions(searchTerm);
             
             // Show results section and hide recommendations
             this.showSearchResults();
+            this.renderWorkflows();
         } else {
             // Clear suggestions
             document.getElementById('searchSuggestions').classList.add('hidden');
@@ -101,8 +111,8 @@ class WorkflowLibrary {
             this.hideSearchResults();
             this.filteredWorkflows = [...this.workflows];
         }
-
-        this.applyFilters();
+        
+        this.updateStats();
     }
 
     showSearchSuggestions(term) {
@@ -343,14 +353,14 @@ class WorkflowLibrary {
 
         // Load and display JSON
         try {
-            const response = await fetch(workflow.relativePath);
+            const response = await fetch(workflow.webPath);
             const jsonData = await response.json();
             document.getElementById('jsonContent').textContent = JSON.stringify(jsonData, null, 2);
             this.currentWorkflowJson = jsonData;
             this.currentWorkflowName = workflow.name;
         } catch (error) {
-            document.getElementById('jsonContent').textContent = 'Failed to load JSON';
-            console.error('Error loading JSON:', error);
+            document.getElementById('jsonContent').textContent = 'Failed to load JSON: ' + error.message;
+            console.error('Error loading JSON from path:', workflow.webPath, error);
         }
 
         // Display related workflows

@@ -4,15 +4,15 @@
 
 ## Most Popular Workflow Categories
 
-01. Webhook - 65 workflows
-02. Schedule - 52 workflows
-03. Googlesheets - 26 workflows
-04. Stickynote - 24 workflows
-05. Noop - 24 workflows
-06. Mattermost - 24 workflows
-07. Form - 23 workflows
-08. Filter - 23 workflows
-09. Limit - 22 workflows
+1.  Webhook - 65 workflows
+2.  Schedule - 52 workflows
+3.  Googlesheets - 26 workflows
+4.  Stickynote - 24 workflows
+5.  Noop - 24 workflows
+6.  Mattermost - 24 workflows
+7.  Form - 23 workflows
+8.  Filter - 23 workflows
+9.  Limit - 22 workflows
 10. Extractfromfile - 21 workflows
 11. Datetime - 18 workflows
 12. Error - 17 workflows
@@ -108,87 +108,87 @@
 97. Travisci
 98. Toggl
 99. Todoist
-100. Thehive
-101. Telegramtool
-102. Taiga
-103. Signl4
-104. Removeduplicates
-105. Raindrop
-106. Process
-107. Posthog
-108. Onfleet
-109. Nocodb
-110. N8ntrainingcustomermessenger
-111. Mqtt
-112. Microsofttodo
-113. Microsoftonedrive
-114. Microsoftexcel
-115. Matrix
-116. Mailerlite
-117. Mailcheck
-118. Keap
-119. Jotform
-120. Invoiceninja
-121. Interval
-122. Intercom
-123. Humanticai
-124. Helpscout
-125. Gumroad
-126. Grist
-127. Gotowebinar
-128. Googletranslate
-129. Googletaskstool
-130. Googlesheetstool
-131. Googledrivetool
-132. Googlecontacts
-133. Googlebigquery
-134. Getresponse
-135. Flow
-136. Figma
-137. Facebookleadads
-138. Facebook
-139. Export
-140. Eventbrite
-141. Emelia
-142. Elasticsearch
-143. Dropbox
-144. Debughelper
-145. Customerio
-146. Cron
-147. Cortex
-148. Copper
-149. Convertkit
-150. Comparedatasets
-151. Coingecko
-152. Chargebee
-153. Box
-154. Bitwarden
-155. Bitly
-156. Bitbucket
-157. Beeminder
-158. Baserow
-159. Awstextract
-160. Awssns
-161. Awsrekognition
-162. Apitemplateio
-163. Amqp
-164. Airtoptool
-165. Affinity
-166. Acuityscheduling
-167. Activecampaign
+100.  Thehive
+101.  Telegramtool
+102.  Taiga
+103.  Signl4
+104.  Removeduplicates
+105.  Raindrop
+106.  Process
+107.  Posthog
+108.  Onfleet
+109.  Nocodb
+110.  N8ntrainingcustomermessenger
+111.  Mqtt
+112.  Microsofttodo
+113.  Microsoftonedrive
+114.  Microsoftexcel
+115.  Matrix
+116.  Mailerlite
+117.  Mailcheck
+118.  Keap
+119.  Jotform
+120.  Invoiceninja
+121.  Interval
+122.  Intercom
+123.  Humanticai
+124.  Helpscout
+125.  Gumroad
+126.  Grist
+127.  Gotowebinar
+128.  Googletranslate
+129.  Googletaskstool
+130.  Googlesheetstool
+131.  Googledrivetool
+132.  Googlecontacts
+133.  Googlebigquery
+134.  Getresponse
+135.  Flow
+136.  Figma
+137.  Facebookleadads
+138.  Facebook
+139.  Export
+140.  Eventbrite
+141.  Emelia
+142.  Elasticsearch
+143.  Dropbox
+144.  Debughelper
+145.  Customerio
+146.  Cron
+147.  Cortex
+148.  Copper
+149.  Convertkit
+150.  Comparedatasets
+151.  Coingecko
+152.  Chargebee
+153.  Box
+154.  Bitwarden
+155.  Bitly
+156.  Bitbucket
+157.  Beeminder
+158.  Baserow
+159.  Awstextract
+160.  Awssns
+161.  Awsrekognition
+162.  Apitemplateio
+163.  Amqp
+164.  Airtoptool
+165.  Affinity
+166.  Acuityscheduling
+167.  Activecampaign
 
 ---
 
 ## 📊 Quick Statistics
 
-| Tier | Workflows | Count |
-|------|-----------|-------|
-| Top Tier (50+) | Webhook, Schedule | 2 |
-| Popular (10-49) | Various integrations | 16 |
-| Common (5-9) | Multiple tools | 27 |
-| Medium (3-4) | Various services | 23 |
-| Small (2) | Limited workflows | 23 |
-| Single (1) | One workflow each | 91 |
+| Tier            | Workflows            | Count |
+| --------------- | -------------------- | ----- |
+| Top Tier (50+)  | Webhook, Schedule    | 2     |
+| Popular (10-49) | Various integrations | 16    |
+| Common (5-9)    | Multiple tools       | 27    |
+| Medium (3-4)    | Various services     | 23    |
+| Small (2)       | Limited workflows    | 23    |
+| Single (1)      | One workflow each    | 91    |
 
 ---
 

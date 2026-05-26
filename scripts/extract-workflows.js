@@ -5,7 +5,7 @@ const path = require('path');
 const glob = require('glob');
 
 // Extract workflow metadata
-function extractWorkflowMetadata(filePath) {
+function extractWorkflowMetadata(filePath, workflowDir) {
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
     const workflow = JSON.parse(content);
@@ -27,13 +27,18 @@ function extractWorkflowMetadata(filePath) {
       });
     }
     
+    // Calculate web-accessible path from website folder
+    const webPath = path.relative(
+      path.join(workflowDir, 'website'),
+      filePath
+    ).replace(/\\/g, '/');
+    
     return {
       id,
       name: fileName.replace('.json', ''),
       fileName,
       category: dirName,
-      path: filePath,
-      relativePath: path.relative('/Users/z/Documents/Code/n8n', filePath),
+      webPath: webPath,
       nodes: nodeNames,
       nodeTypes: [...new Set(nodeTypes)],
       nodeCount: workflow.nodes ? workflow.nodes.length : 0,
@@ -49,7 +54,7 @@ function extractWorkflowMetadata(filePath) {
 
 // Main function
 function main() {
-  const workflowDir = '/Users/z/Documents/Code/n8n';
+  const workflowDir = process.cwd();
   const outputFile = path.join(workflowDir, 'website', 'data', 'workflows.json');
   
   // Ensure output directory exists
@@ -80,7 +85,7 @@ function main() {
       console.log(`Processing ${index}/${files.length}...`);
     }
     
-    const metadata = extractWorkflowMetadata(file);
+    const metadata = extractWorkflowMetadata(file, workflowDir);
     if (metadata) {
       workflows.push(metadata);
       categories.add(metadata.category);
