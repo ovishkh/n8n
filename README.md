@@ -71,31 +71,37 @@ The collection includes workflows for:
 
 ## 🎯 Key Statistics
 
-| Metric | Count |
-|--------|-------|
-| Total Workflows | 784 |
-| Categories | 172 |
-| Total Nodes | ~12,000+ |
+| Metric           | Count      |
+| ---------------- | ---------- |
+| Total Workflows  | 784        |
+| Categories       | 172        |
+| Total Nodes      | ~12,000+   |
 | Largest Workflow | 125+ nodes |
-| Average Workflow | 15 nodes |
+| Average Workflow | 15 nodes   |
 
 ## 🔍 How to Find Workflows
 
 ### By Search
+
 Type in the search box to find workflows by:
+
 - Workflow name
 - Category (e.g., "Slack", "Gmail")
 - Integration service (e.g., "Airtable", "Stripe")
 - Workflow ID
 
 ### By Filtering
+
 Use filters to narrow down by:
+
 - **Category**: Select one or multiple categories
 - **Node Type**: Filter by integration type
 - **Size**: Small (<5KB), Medium (5-20KB), Large (>20KB)
 
 ### Recommendations
+
 Browse recommended workflows:
+
 - **Complex Workflows**: Most nodes (great for learning)
 - **Recent Workflows**: Latest additions
 - **Popular Categories**: Most used integrations
@@ -115,6 +121,7 @@ Browse recommended workflows:
 ### Download and Use
 
 Alternatively, download the workflow JSON file directly and:
+
 1. Import it into N8N from file
 2. Share it with teammates
 3. Version control in your own repository
@@ -157,6 +164,7 @@ npm run extract
 ```
 
 This will:
+
 - Scan all workflow files
 - Extract metadata (nodes, connections, size, etc.)
 - Generate `website/data/workflows.json`
@@ -181,17 +189,20 @@ class WorkflowLibrary {
 ## 📊 Features Explained
 
 ### Search Engine
+
 - Real-time search as you type
 - Autocomplete suggestions
 - Search by: name, category, ID, node type
 - Instant filtering of results
 
 ### View Options
+
 - **Grid View**: Visual workflow cards with metadata
 - **List View**: Compact list with essential info
 - Toggle between views seamlessly
 
 ### Detailed Workflow View
+
 - Syntax-highlighted JSON viewer
 - Expandable/collapsible sections
 - Copy or download functionality
@@ -199,6 +210,7 @@ class WorkflowLibrary {
 - Complete metadata display
 
 ### Recommendations
+
 - Algorithmically generated suggestions
 - Based on complexity, recency, and popularity
 - Helps discover relevant workflows
@@ -222,6 +234,7 @@ Found a useful workflow? Want to add your own?
 ## 📖 Documentation
 
 For more detailed information, see:
+
 - [Workflows README](WORKFLOWS_README.md) - Detailed workflow guide
 - [N8N Docs](https://docs.n8n.io/) - Official N8N documentation
 - [N8N Community](https://community.n8n.io/) - Community forum
