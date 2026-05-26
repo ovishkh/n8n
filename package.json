@@ -1,0 +1,26 @@
+{
+  "name": "n8n",
+  "version": "1.0.0",
+  "description": "N8N workflows",
+  "main": "index.js",
+  "scripts": {
+    "extract": "node scripts/extract-workflows.js",
+    "serve": "python3 -m http.server 8000 --directory website",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ovishkh/n8n.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ovishkh/n8n/issues"
+  },
+  "homepage": "https://github.com/ovishkh/n8n#readme",
+  "dependencies": {
+    "glob": "^13.0.6"
+  }
+}

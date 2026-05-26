@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N8N Workflow Library - Search & Download</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>🔄 N8N Workflow Library</h1>
+                    <p class="subtitle">Explore, Search & Download 782 Automation Workflows</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-wrapper">
+            <!-- Left Sidebar -->
+            <aside class="sidebar">
+                <div class="search-section">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="Search workflows..."
+                        autocomplete="off"
+                    >
+                    <div id="searchSuggestions" class="search-suggestions hidden"></div>
+                </div>
+
+                <div class="filters">
+                    <h3>Filters</h3>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="filterByNodes" class="filter-checkbox" data-filter="nodes">
+                            By Node Type
+                        </label>
+                        <div id="nodeFilters" class="filter-options hidden"></div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="categoryToggle" class="filter-checkbox" data-filter="category">
+                            By Category
+                        </label>
+                        <div id="categoryList" class="filter-options hidden" style="max-height: 300px; overflow-y: auto;"></div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="sizeToggle" class="filter-checkbox" data-filter="size">
+                            By Size
+                        </label>
+                        <div id="sizeFilters" class="filter-options hidden">
+                            <label><input type="radio" name="size" value="small" class="size-filter"> Small (< 5KB)</label>
+                            <label><input type="radio" name="size" value="medium" class="size-filter"> Medium (5-20KB)</label>
+                            <label><input type="radio" name="size" value="large" class="size-filter"> Large (> 20KB)</label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-secondary" id="clearFilters">Clear Filters</button>
+                </div>
+
+                <div class="stats">
+                    <h3>Statistics</h3>
+                    <div class="stat-item">
+                        <span>Total Workflows:</span>
+                        <strong id="totalWorkflows">0</strong>
+                    </div>
+                    <div class="stat-item">
+                        <span>Categories:</span>
+                        <strong id="totalCategories">0</strong>
+                    </div>
+                    <div class="stat-item">
+                        <span>Visible:</span>
+                        <strong id="visibleWorkflows">0</strong>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <!-- Results and Recommendations -->
+                <div class="content-section">
+                    <!-- Recommendations -->
+                    <section id="recommendationsSection" class="recommendations-section">
+                        <h2>📌 Recommended Workflows</h2>
+                        <div id="recommendationsList" class="workflows-grid"></div>
+                    </section>
+
+                    <!-- Search Results -->
+                    <section id="resultsSection" class="results-section hidden">
+                        <div class="results-header">
+                            <h2>Search Results</h2>
+                            <div class="view-options">
+                                <button class="view-btn active" data-view="grid" title="Grid View">
+                                    <span>⊞</span> Grid
+                                </button>
+                                <button class="view-btn" data-view="list" title="List View">
+                                    <span>☰</span> List
+                                </button>
+                            </div>
+                        </div>
+                        <div id="workflowsList" class="workflows-grid"></div>
+                        <div id="noResults" class="no-results hidden">
+                            <p>No workflows found. Try adjusting your search or filters.</p>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal for Workflow Details -->
+    <div id="workflowModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="workflow-info">
+                    <div class="info-item">
+                        <span class="label">ID:</span>
+                        <span id="infoId"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Category:</span>
+                        <span id="infoCategory"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Nodes:</span>
+                        <span id="infoNodeCount"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Size:</span>
+                        <span id="infoSize"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Created:</span>
+                        <span id="infoCreated"></span>
+                    </div>
+                </div>
+
+                <div class="json-viewer">
+                    <div class="json-toolbar">
+                        <button class="btn btn-small" id="copyJsonBtn">📋 Copy JSON</button>
+                        <button class="btn btn-small" id="downloadJsonBtn">⬇ Download JSON</button>
+                        <button class="btn btn-small" id="expandAllBtn">Expand All</button>
+                        <button class="btn btn-small" id="collapseAllBtn">Collapse All</button>
+                    </div>
+                    <pre id="jsonContent" class="json-content"></pre>
+                </div>
+
+                <div id="relatedWorkflows" class="related-workflows">
+                    <h3>Related Workflows (Same Category)</h3>
+                    <div id="relatedList" class="workflows-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
