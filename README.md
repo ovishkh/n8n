@@ -29,11 +29,18 @@ Welcome to the **N8N Workflows Library** - A comprehensive collection of **784 p
 # Extract workflow metadata (only needed if updating)
 npm run extract
 
-# Serve the website
+# Serve the website locally
 npm run serve
 
-# Then open http://localhost:8000/website in your browser
+# Then open http://localhost:8000 in your browser
 ```
+
+### Live Website
+
+The website is automatically deployed via GitHub Actions on every push:
+- **GitHub Pages URL**: `https://yourusername.github.io/n8n/website/`
+- **Auto-updates**: Deploys within seconds of pushing to main branch
+- **Workflow metadata**: Automatically extracted and indexed
 
 ## 📂 Repository Structure
 
@@ -44,12 +51,40 @@ npm run serve
 │   ├── app.js                   # JavaScript application
 │   └── data/workflows.json      # Workflow metadata
 ├── scripts/
-│   └── extract-workflows.js     # Data extraction script
+│   ├── extract-workflows.js     # Data extraction script
+│   └── rename-by-rank.js        # Folder ranking tool
 ├── .agents/                      # Agent configurations
-├── [Category Folders]/           # 172+ workflow categories
+├── [1-171]-[Category]/           # 171 ranked workflow folders
 │   └── [workflow].json
+├── workflows/                    # Tier-based organization index
+│   ├── 01-TOP-TIER/
+│   ├── 02-POPULAR/
+│   ├── 03-COMMON/
+│   ├── 04-MEDIUM/
+│   ├── 05-SMALL/
+│   └── 06-NICHE/
 └── README.md
 ```
+
+## 🏆 Folder Organization by Popularity
+
+All workflow categories are **ranked 1-171 by popularity** based on the number of workflows:
+
+| Rank | Category | Workflows |
+|------|----------|-----------|
+| 1️⃣ | **1-Webhook** | 65 |
+| 2️⃣ | **2-Schedule** | 52 |
+| 3️⃣ | **3-Googlesheets** | 26 |
+| ... | ... | ... |
+| 168 | **168-Postmark** | 1 |
+| 169 | **169-Sse** | 1 |
+| 170 | **170-Twittertool** | 1 |
+| 171 | **171-Webflow** | 1 |
+
+**Example paths:**
+- `1-Webhook/0322_Webhook_Schedule_Create_Webhook.json`
+- `2-Schedule/0417_Schedule_Gmail_Send_Scheduled.json`
+- `171-Webflow/0953_Webflow_Update_Triggered.json`
 
 ## 📚 Workflow Categories
 
