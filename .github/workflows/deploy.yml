@@ -8,13 +8,9 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -28,21 +24,9 @@ jobs:
       - name: Extract workflows data
         run: npm run extract
 
-      - name: Configure git
-        run: |
-          git config --local user.email "github-actions@github.com"
-          git config --local user.name "GitHub Actions"
-
-      - name: Deploy to gh-pages
-        run: |
-          # Create orphan gh-pages branch or use existing
-          git checkout --orphan gh-pages 2>/dev/null || git checkout gh-pages
-
-          # Remove all files and copy website content
-          git rm -rf . --ignore-unmatch
-          cp -r website/* .
-
-          # Add and commit
-          git add -A
-          git commit -m "Deploy: $(date -u +'%Y-%m-%d %H:%M:%S')" || exit 0
-          git push origin gh-pages --force
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./website
+          cname: ""
